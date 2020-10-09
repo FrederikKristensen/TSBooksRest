@@ -9,21 +9,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-  <title>Hello app</title>
+  <title>Bookstore</title>
 </head>
 
 <body>
-  <h1>Hello</h1>
-  <div id="app">
-    <input v-model="name" placeholder="Name">
-    <button v-on:click="sayHello()" class="btn btn-primary">Say hello</button>
-    <div>{{ greeting }}</div>
+  <div class="row">
+      <div class="col-7">
+          <h1>Welcome to the Bookstore</h1>
+          <div id="app">
+              <input v-model="booklist" placeholder="Book">
+              <button v-on:click="post()" class="btn btn-primary">Post!</button>
+          </div>
+      </div>
+
+      <div class="col-5">
+          <h2>List of all books:</h2>
+          <ul v-if="books">
+              <li v-for="book in books">{{book.id}}, {{book.author}}: {{book.title}}, {{book.publisher}} {{ book.price}}</li>
+            </ul>
+            <div v-else>No books</div>
+      </div>
   </div>
+
+
 
   <script src="bundle.js"></script>
 </body>
-
 </html>
